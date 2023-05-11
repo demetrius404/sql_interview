@@ -15,9 +15,9 @@
 DROP TABLE IF EXISTS tab;
 
 CREATE TABLE tab (
-  id INTEGER,
-  name VARCHAR,
-  sold_total INTEGER
+id INTEGER,
+name VARCHAR,
+sold_total INTEGER
 );
 
 INSERT INTO tab VALUES 
@@ -42,8 +42,8 @@ SELECT * FROM tab;
 
 ```sql
 SELECT
-  name,
-  sum(sold_total) as sum_sold_total
+name,
+sum(sold_total) as sum_sold_total
 FROM tab
 GROUP BY name
 ORDER BY sum_sold_total;
@@ -69,7 +69,7 @@ WITH T AS
   ORDER BY sum_sold_total
 )
 SELECT 
-  name
+name
 FROM T
 WHERE r=2;
 ```
