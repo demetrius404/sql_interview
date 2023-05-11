@@ -44,18 +44,17 @@ SELECT * FROM tab;
 SELECT
 name,
 sum(sold_total) as sum_sold_total,
-dense_rank() OVER (ORDER BY sum(sold_total)) AS r
+dense_rank() OVER (ORDER BY sum(sold_total) DESC) AS r
 FROM tab
 GROUP BY name
-ORDER BY sum_sold_total;
+ORDER BY sum_sold_total DESC;
 ```
 
 |name |sum_sold_total|r|
 |-----|--------------|-|
-|shop3|15            |1|
+|shop2|24            |1|
 |shop1|21            |2|
-|shop2|24            |3|
-
+|shop3|15            |3|
 ```sql
 SELECT '--- SOLUTION ---';
 
@@ -64,10 +63,10 @@ WITH T AS
   SELECT
   name,
   sum(sold_total) as sum_sold_total,
-  dense_rank() OVER (ORDER BY sum(sold_total)) AS r
+  dense_rank() OVER (ORDER BY sum(sold_total) DESC) AS r
   FROM tab
   GROUP BY name
-  ORDER BY sum_sold_total
+  ORDER BY sum_sold_total DESC
 )
 SELECT 
 name
