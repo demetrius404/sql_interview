@@ -43,17 +43,18 @@ SELECT * FROM tab;
 ```sql
 SELECT
 name,
-sum(sold_total) as sum_sold_total
+sum(sold_total) as sum_sold_total,
+dense_rank() OVER (ORDER BY sum(sold_total)) AS r
 FROM tab
 GROUP BY name
 ORDER BY sum_sold_total;
 ```
 
-|name |sum_sold_total|
-|-----|--------------|
-|shop3|15            |
-|shop1|21            |
-|shop2|24            |
+|name |sum_sold_total|r|
+|-----|--------------|-|
+|shop3|15            |1|
+|shop1|21            |2|
+|shop2|24            |3|
 
 ```sql
 SELECT '--- SOLUTION ---';
