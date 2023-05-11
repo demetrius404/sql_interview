@@ -62,11 +62,9 @@ WITH T AS
 (
   SELECT
   name,
-  sum(sold_total) as sum_sold_total,
   dense_rank() OVER (ORDER BY sum(sold_total) DESC) AS r
   FROM tab
   GROUP BY name
-  ORDER BY sum_sold_total DESC
 )
 SELECT 
 name
